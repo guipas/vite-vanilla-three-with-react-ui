@@ -1,4 +1,1 @@
-
-
-Todo:
-- add mutate history (w/ colors), save it to the cart and load it  when loading the game
+Use this to start a (vanilla) ThreeJS project and use react only for th UI layer.
