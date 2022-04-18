@@ -7,6 +7,7 @@ import store from '../common/store';
 import '../common/storage/storage';
 import { camera, cameraPositionISO, onResizeCamera, referencePlane, rotateCamera, sizes } from './camera'
 import { lights } from './lights';
+import { tick as worldTick } from './world';
 
 import './style.css'
 import { world } from './world';
@@ -74,6 +75,8 @@ const tick = () =>
 {
   const elapsedTime = clock.getElapsedTime()
   camera.updateProjectionMatrix();
+
+  worldTick();
 
   // Update tweens
   TWEEN.update();
