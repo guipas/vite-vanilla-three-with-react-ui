@@ -6,7 +6,7 @@ uniform float uTime;
 
 attribute vec3 position;
 
-varying float vElevation;
+varying float vOpacity;
 
 // Classic Perlin 3D Noise 
 // by Stefan Gustavson
@@ -93,18 +93,30 @@ float cnoise(vec3 P)
     return 2.2 * n_xyz;
 }
 
+float moveLoop(float z, float time, float limit) {
+    float distance = mod(z + time, limit);
+    return distance;
+}
+
 void main()
 {
     // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
 
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    float perlin = cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 1.0));
+    // modelPosition.y += perlin;
     // modelPosition.y += sin(modelPosition.z * 10.0 + uTime) * 0.1;
     // modelPosition.y += sin(modelPosition.x * 5.0 + uTime) * 0.1;
+
+    float limit = 3.0;
+    modelPosition.z = moveLoop(modelPosition.z, uTime, limit);
+    modelPosition.z -= limit / 2.0;
+    
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
 
-    vElevation = cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 0.1));
-    // vElevation = 1.0;
+    // vOpacity = cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 1.0));
+    vOpacity = 1.0;
 
     gl_Position = projectedPosition;
 }
