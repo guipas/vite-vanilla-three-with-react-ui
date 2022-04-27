@@ -116,20 +116,23 @@ void main()
     // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
 
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
-    float perlin = cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 0.01));
+    // float perlin = cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 0.01));
     // modelPosition.y += perlin* 0.5;
-    modelPosition.y += sin(modelPosition.z * 10.0 + uTime) * 0.01;
-    modelPosition.y += cos(modelPosition.x * 8.0 + uTime) * 0.05;
+    // modelPosition.y += sin(modelPosition.z * 10.0 + uTime) * 0.01;
+    // modelPosition.y += cos(modelPosition.x * 8.0 + uTime) * 0.05;
     // modelPosition.y += cos(modelPosition.x * 20.0 + uTime) * 0.01;
     // float limit = 2.0;
 
 
-    modelPosition.z = moveLoop(modelPosition.z, uTime * 0.1, uLimit);
-    modelPosition.z -= uLimit / 2.0;
+    // modelPosition.z = moveLoop(modelPosition.z, uTime / 10000.0, uLimit);
+    // float move = moveLoop(modelPosition.z, uTime / 10000.0, uLimit);
+    float move = (modelPosition.z + 0.01) + uTime / 10.0;
+    // modelPosition.z -= uLimit / 2.0;
     
     vOpacity = min(opacityBox(modelPosition.z, uLimit), opacityBox(modelPosition.x, uLimit));
     // vOpacity *= cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 1.0));
-    vOpacity *= 4.0 * cnoise(vec3(modelPosition.x, modelPosition.y, modelPosition.z));
+    float multiplier = 2.0;
+    vOpacity *= 4.0 * cnoise(vec3(modelPosition.x * multiplier, modelPosition.y * multiplier, move));
     // vOpacity = 1.0;
 
     vec4 viewPosition = viewMatrix * modelPosition;
@@ -137,5 +140,5 @@ void main()
 
 
     gl_Position = projectedPosition;
-    gl_PointSize = uSize;
+    // gl_PointSize = uSize;
 }
