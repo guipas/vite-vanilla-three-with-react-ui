@@ -49,9 +49,16 @@ export const tick = () => {
   }
 }
 
-world.add(mesh);
-world.add(mesh2);
+// world.add(mesh);
+// world.add(mesh2);
 // world.add(points);
+
+Array.from({ length: 100 }).forEach((_x, i) => {
+  const m = new THREE.Mesh(geometry, material);
+  m.position.z = 0.01 * i;
+  world.add(m);
+})
+
 
 
 

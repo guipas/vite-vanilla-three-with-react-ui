@@ -13,6 +13,6 @@ void main()
 
     // gl_FragColor = vec4(gl_PointCoord, 1.0, 1.0 - strength);
     // gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0 - strength);
-    gl_FragColor = vec4(0.2, 0.2, 1.0, vOpacity * 2.0);
+    gl_FragColor = vec4(0.2, 0.2, 1.0, vOpacity * 0.5);
 
 }
