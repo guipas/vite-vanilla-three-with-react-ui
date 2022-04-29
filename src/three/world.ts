@@ -11,7 +11,7 @@ export const world = new THREE.Group();
 // const geometry = new THREE.PlaneBufferGeometry(2, 2, 100, 100);
 
 const geometry = new THREE.BufferGeometry();
-const nbVertices = 50000;
+const nbVertices = 500000;
 // const verticesCoordinates = Array.from({ length: nbVertices * 3 }, () => Math.random() * 3 - 1.5);
 const verticesCoordinates: number[] = [];
 Array.from({ length: nbVertices * 3 }).forEach((_i, i) => {
@@ -46,13 +46,13 @@ geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 
 const uniforms = {
   uTime: { value: 0 },
-  uSize: { value: 4 },
+  uSize: { value: 6 },
   uLimit: { value: 3 },
 };
 
 // const material = new THREE.MeshStandardMaterial({ color: '#ffaaff' });
-// const material = new THREE.RawShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true});
-const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true, side: THREE.DoubleSide });
+const material = new THREE.RawShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true, side: THREE.DoubleSide});
+// const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true, side: THREE.DoubleSide });
 
 const mesh = new THREE.Mesh(geometry, material);
 // mesh.rotation.x = - Math.PI / 2;
