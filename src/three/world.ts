@@ -12,15 +12,15 @@ export const world = new THREE.Group();
 
 const geometry = new THREE.BufferGeometry();
 const nbVertices = 500000;
-const verticesCoordinates = Array.from({ length: nbVertices * 3 }, () => Math.random() * 3 - 1.5);
-// const verticesCoordinates: number[] = [];
-// Array.from({ length: nbVertices * 3 }).forEach((_i, i) => {
-//   verticesCoordinates.push(
-//     Math.random() * 3 - 1.5,
-//     Math.random() * 0.5 - 0.25,
-//     Math.random() * 3 - 1.5,
-//   );
-// });
+// const verticesCoordinates = Array.from({ length: nbVertices * 3 }, () => Math.random() * 3 - 1.5);
+const verticesCoordinates: number[] = [];
+Array.from({ length: nbVertices * 3 }).forEach((_i, i) => {
+  verticesCoordinates.push(
+    Math.random() * 3 - 1.5,
+    Math.random() * 0.5 - 0.25,
+    Math.random() * 3 - 1.5,
+  );
+});
 // const cubeSize = 3;
 // Array.from({ length: nbVertices }).forEach((noop, x) => {
 //   Array.from({ length: nbVertices }).forEach((noop, y) => {
