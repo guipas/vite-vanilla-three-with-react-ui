@@ -14,6 +14,7 @@ void main()
     // gl_FragColor = vec4(gl_PointCoord, 1.0, 1.0 - strength);
     // gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0 - strength);
     // gl_FragColor = vec4(0.2, 0.2, 1.0, (1.0 - strength));
-    // float opacity = mix()
-    gl_FragColor = vec4(0.2, 0.2, 1.0, (1.0 - strength) * (vOpacity * 2.0));
+    float opacity = (1.0 - strength) * (vOpacity);
+    // opacity *= step(0.3, opacity);
+    gl_FragColor = vec4(0.2, 0.2, 1.0, opacity);
 }

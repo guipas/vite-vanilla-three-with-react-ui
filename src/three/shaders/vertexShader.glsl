@@ -1,12 +1,12 @@
-uniform mat4 projectionMatrix;
-uniform mat4 viewMatrix;
-uniform mat4 modelMatrix;
+// uniform mat4 projectionMatrix;
+// uniform mat4 viewMatrix;
+// uniform mat4 modelMatrix;
+// attribute vec3 position;
 
 uniform float uTime;
 uniform float uSize;
 uniform float uLimit;
 
-attribute vec3 position;
 
 varying float vOpacity;
 
@@ -129,14 +129,15 @@ void main()
     
     // vOpacity = min(opacityBox(modelPosition.z, uLimit), opacityBox(modelPosition.x, uLimit));
     // vOpacity *= cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 1.0));
-    // vOpacity = 4.0 * cnoise(vec3(position.x, position.y, position.z));
+    vOpacity = cnoise(vec3(position.x, position.y, position.z));
     // vOpacity *= 4.0 * cnoise(vec3(modelPosition.x, modelPosition.y, modelPosition.z));
     // vOpacity = 1.0;
 
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
 
-    vOpacity = 4.0 * cnoise(vec3(position.x, position.y, position.z));
+    // vOpacity = 1.0 * cnoise(vec3(position.x, position.y, position.z));
+    // vOpacity = 1.0;
     // vOpacity = 4.0 * cnoise(vec3(modelPosition.x, modelPosition.y, modelPosition.z));
     // vOpacity = 4.0 * cnoise(vec3(viewPosition.x, viewPosition.y, viewPosition.z));
     // vOpacity = 4.0 * cnoise(vec3(projectedPosition.x, projectedPosition.y, projectedPosition.z));
