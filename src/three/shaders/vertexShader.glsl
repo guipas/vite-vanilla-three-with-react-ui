@@ -131,7 +131,7 @@ void main()
     
     vOpacity = min(opacityBox(modelPosition.z, uLimit), opacityBox(modelPosition.x, uLimit));
     // vOpacity *= cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 1.0));
-    float multiplier = 2.0;
+    float multiplier = 4.0;
     vOpacity *= 4.0 * cnoise(vec3(modelPosition.x * multiplier, modelPosition.y * multiplier, move));
     // vOpacity = 1.0;
 

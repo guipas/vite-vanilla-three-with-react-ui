@@ -8,7 +8,7 @@ const clock = new THREE.Clock()
 export const world = new THREE.Group();
 
 // const geometry = new THREE.BoxBufferGeometry(1, 1, 1, 50, 50, 50);
-const geometry = new THREE.PlaneBufferGeometry(2, 1, 100, 100);
+const geometry = new THREE.PlaneBufferGeometry(2, 0.5, 100, 100);
 
 // const geometry = new THREE.BufferGeometry();
 // const nbVertices = 50000;
@@ -53,9 +53,9 @@ export const tick = () => {
 // world.add(mesh2);
 // world.add(points);
 
-Array.from({ length: 100 }).forEach((_x, i) => {
+Array.from({ length: 300 }).forEach((_x, i) => {
   const m = new THREE.Mesh(geometry, material);
-  m.position.z = 0.01 * i;
+  m.position.z = - 1.5 + (0.01 * i);
   world.add(m);
 })
 
