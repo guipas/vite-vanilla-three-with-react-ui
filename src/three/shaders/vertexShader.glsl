@@ -134,10 +134,10 @@ void main()
 
 
     float move = (modelPosition.z + 0.01) + uTime / 5.0;
-    // vOpacity = min(opacityBox(modelPosition.z, uLimit), opacityBox(modelPosition.x, uLimit));
+    vOpacity = min(opacityBox(modelPosition.z, uLimit), opacityBox(modelPosition.x, uLimit));
     // vOpacity *= cnoise(vec3(modelPosition.x * 2.0, modelPosition.y * 2.0, uTime * 1.0));
     float multiplier = 2.0;
-    vOpacity = 0.1 * cnoise(vec3(modelPosition.x * multiplier, modelPosition.y * multiplier, move));
+    vOpacity *= 4.0 * cnoise(vec3(modelPosition.x * multiplier, modelPosition.y * multiplier, move));
     // vOpacity = 1.0;
 
     vec4 viewPosition = viewMatrix * modelPosition;

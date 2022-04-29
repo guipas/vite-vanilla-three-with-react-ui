@@ -46,8 +46,8 @@ geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 
 const uniforms = {
   uTime: { value: 0 },
-  uSize: { value: 6 },
-  uLimit: { value: 3 },
+  uSize: { value: 3 },
+  uLimit: { value: 4 },
 };
 
 // const material = new THREE.MeshStandardMaterial({ color: '#ffaaff' });
