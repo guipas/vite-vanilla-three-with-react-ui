@@ -27,7 +27,7 @@ export const	camera = new THREE.OrthographicCamera(
   .000001, 
   1000
 );
-camera.scale.set(.2, .2, .2);
+camera.scale.set(.3, .3, .3);
 camera.updateProjectionMatrix();
 camera.position.x = 1;
 camera.position.y = 1;
